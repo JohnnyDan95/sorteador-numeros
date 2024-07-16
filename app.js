@@ -10,16 +10,31 @@ function sortear() {
 
     let numero;
 
-    for (let i = 0; i < quantidade; i++) {
+    let intervalo = Math.abs(de - ate);
 
-        numero = obterNumeroAleatorio(de, ate);
+    if (quantidade > intervalo) {
 
-        while (sorteados.includes(numero)) {
-            numero = obterNumeroAleatorio(de, ate);
-        }
+        alert('"Quantidade" não pode ser maior que o intervalo entre os números escolhidos!');
 
-        sorteados.push(numero);
     }
+    
+    if (de < ate) {
+
+        for (let i = 0; i < quantidade; i++) {
+
+            numero = obterNumeroAleatorio(de, ate);
+
+            while (sorteados.includes(numero)) {
+                numero = obterNumeroAleatorio(de, ate);
+            }
+            sorteados.push(numero);
+        }
+    } else {
+
+        alert('"Do" não pode ser maior que "Até"');
+
+    }
+
 
     let resultado = document.getElementById('resultado');
     resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:${sorteados}</label>`;
@@ -45,7 +60,7 @@ function alterarStatusBotao() {
 
         botao.classList.remove('container__botao');
         botao.classList.add('container__botao-desabilitado');
-        
+
     }
 }
 
