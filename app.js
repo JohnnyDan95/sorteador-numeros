@@ -37,7 +37,13 @@ function sortear() {
 
 
     let resultado = document.getElementById('resultado');
-    resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:${sorteados}</label>`;
+    
+    if (quantidade > 1){
+        resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:${sorteados}</label>`;
+    } else {
+        resultado.innerHTML = `<label class="texto__paragrafo">Número sorteado:${sorteados}</label>`;
+    }
+    
     alterarStatusBotao();
 }
 
